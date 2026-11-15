@@ -1,0 +1,318 @@
+/* === PASSWORD STRENGTH CHECKER PAGE === */
+body {
+  background: linear-gradient(135deg, #000814, #001d3d);
+  color: #dce5f7;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 6rem;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- Main Layout --- */
+.app-container {
+  width: 90%;
+  margin: 3.5rem auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* --- Panels --- */
+.left-panel, .right-panel {
+  background: rgba(10, 25, 50, 0.45);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  color: #dce5f7;
+}
+
+.left-panel { flex: 1.8; }
+.right-panel { flex: 1; text-align: center; }
+
+/* --- Title --- */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #fff;
+}
+
+/* --- Password Input --- */
+.password-input {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.password-input input {
+  width: 100%;
+  padding: 0.9rem 3rem 0.9rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.password-input button {
+  position: absolute;
+  right: 13px;
+  top: 10px;
+  font-size: 1.3rem;
+  color: #4da6ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- Proceed Button --- */
+.proceed-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg, #007bff, #00b4ff);
+  color: #fff;
+  margin-top: 1.2rem;
+  transition: 0.25s;
+}
+
+.proceed-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 140, 255, 0.5);
+}
+
+/* ---- Strength Text ---- */
+#strengthText {
+  font-size: 1.05rem;
+  color: #9ecbff;
+  margin-top: 0.4rem;
+  font-weight: 600;
+}
+
+/* --- Cards --- */
+.card, .tips-card, .generator-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  border-radius: 15px;
+  padding: 1.15rem;
+  margin-top: 1.2rem;
+}
+
+/* ---- Password Policy ---- */
+.policy-card ul li {
+  list-style: none;
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+/* ---- Meter ---- */
+.meter-area {
+  width: 340px;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.2rem auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77,166,255,0.12), transparent);
+}
+
+/* --- Side-by-side breach + entropy --- */
+.row-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.3rem;
+  margin-top: 2rem;
+}
+.breach-card, .entropy-card { flex: 1; }
+
+/* --- Generator --- */
+.generator-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.generator-controls input {
+  width: 60%;
+  padding: 0.6rem;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(77,166,255,0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.generator-controls button {
+  padding: 0.6rem 1.1rem;
+  font-size: 1rem;
+  background: #4da6ff;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.generator-controls button:hover {
+  background: #007bff;
+}
+
+/* ✅ MOBILE FIX */
+@media (max-width: 920px) {
+  .app-container {
+    flex-direction: column;
+    width: 94%;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .meter-area {
+    width: 250px;
+    height: 250px;
+  }
+
+  .password-input input {
+    font-size: 0.95rem;
+  }
+
+  .row-cards {
+    flex-direction: column;
+  }
+
+  .generator-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  #generatedPass {
+    width: 100%;
+  }
+}
+
+/* ✅ SMALL PHONES */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.45rem;
+  }
+
+  .meter-area {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .card, .generator-card {
+    padding: 0.9rem;
+  }
+
+  body {
+    padding-top: 5rem;
+  }
+}
+/* ✅ MOBILE FIX FOR STRENGTH CHECKER */
+@media (max-width: 900px) {
+
+  .app-container {
+    flex-direction: column !important;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 1rem 1rem;
+    margin: 0;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ✅ Meter smaller on phone */
+  #strengthMeter {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .meter-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  /* ✅ Generator + Output */
+  .generator-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  #generatedPass {
+    width: 100%;
+  }
+
+  /* ✅ Put Breach & Crack into Column */
+  .row-cards {
+    flex-direction: column !important;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .breach-card,
+  .entropy-card {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* ✅ Extra small devices */
+@media (max-width: 450px) {
+  #strengthMeter {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+/* ✅ Fix meter + tips collision on mobile */
+@media (max-width: 900px) {
+
+  .right-panel {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .meter-area {
+    margin-bottom: 1rem;
+  }
+
+  #strengthMeter {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .tips-card {
+    margin-top: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .meter-area {
+    background: radial-gradient(circle, rgba(77,166,255,0.05), transparent);
+  }
+}
+
+
